@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage products · Little Knot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Admin-only tweaks */
+    .admin{max-width:1100px;margin:0 auto;padding:3rem 1.5rem}
+    .admin__head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+    .admin__head h1{font-size:2.2rem}
+    .admin-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:2rem;align-items:flex-start}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1.5rem}
+    .panel h2{font-size:1.2rem;margin-bottom:1rem}
+    .panel .form{margin-top:0}
+    .admin-list{display:flex;flex-direction:column;gap:.75rem;max-height:80vh;overflow-y:auto}
+    .admin-item{
+      display:grid;grid-template-columns:60px 1fr auto;gap:1rem;align-items:center;
+      padding:.75rem;border:1px solid var(--line);border-radius:var(--r-sm);background:#fff;
+    }
+    .admin-item img{width:60px;height:70px;object-fit:cover;border-radius:8px}
+    .admin-item h4{font-family:var(--serif);font-size:1rem;margin:0}
+    .admin-item small{color:var(--ink-soft);font-size:.78rem}
+    .admin-item__actions{display:flex;gap:.4rem}
+    .admin-item__actions button{
+      font-size:.78rem;padding:.4rem .7rem;border-radius:999px;
+      border:1px solid var(--line);background:var(--bg);
+    }
+    .admin-item__actions button:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+    .admin-item__actions .danger:hover{background:var(--accent);border-color:var(--accent)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .actions-row{display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap}
+    .actions-row .btn{padding:.7rem 1.2rem;font-size:.85rem}
+    @media (max-width:820px){.admin-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="admin">
+    <div class="admin__head">
+      <div>
+        <span class="eyebrow">studio · admin</span>
+        <h1>Manage products</h1>
+        <p class="muted">Changes save to your browser's localStorage. No login, no server.</p>
+      </div>
+      <div class="actions-row">
+        <a href="index.html" class="btn btn--outline">← Back to shop</a>
+        <button class="btn btn--outline" id="exportBtn">Export JSON</button>
+        <button class="btn btn--outline" id="resetBtn">Reset to defaults</button>
+      </div>
+    </div>
+
+    <div class="admin-grid">
+      <!-- Form -->
+      <section class="panel">
+        <h2 id="formTitle">Add a new product</h2>
+        <form id="prodForm" class="form">
+          <input type="hidden" name="id" />
+          <label>Title<input name="title" required placeholder="Linen-bound Journal"/></label>
+          <div class="row">
+            <label>Price (₹)<input name="price" type="number" min="0" required placeholder="480"/></label>
+            <label>Stock<input name="stock" type="number" min="0" required placeholder="20"/></label>
+          </div>
+          <div class="row">
+            <label>Category
+              <input name="category" required list="catList" placeholder="Candles"/>
+              <datalist id="catList">
+                <option value="Candles"></option>
+                <option value="Stationery"></option>
+                <option value="Hampers"></option>
+                <option value="Home"></option>
+                <option value="Self-care"></option>
+              </datalist>
+            </label>
+            <label>Tag (optional)<input name="tag" placeholder="new / bestseller"/></label>
+          </div>
+          <label>Image URL<input name="image" required placeholder="https://..."/></label>
+          <label>Short description<textarea name="description" rows="3" required></textarea></label>
+          <div class="actions-row">
+            <button type="submit" class="btn btn--dark" id="submitBtn">Add product</button>
+            <button type="button" class="btn btn--outline" id="cancelBtn" hidden>Cancel edit</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- List -->
+      <section class="panel">
+        <h2>All products (<span id="count">0</span>)</h2>
+        <div class="admin-list" id="adminList"></div>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script>
+    const LS_PRODUCTS = "lk_products";
+    let products = [];
+    const $ = (s) => document.querySelector(s);
+
+    const toastEl = $("#toast");
+    let tt;
+    function toast(m){toastEl.textContent=m;toastEl.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toastEl.hidden=true,2000)}
+
+    async function load(){
+      const stored = localStorage.getItem(LS_PRODUCTS);
+      if(stored){ products = JSON.parse(stored); return; }
+      const r = await fetch("products.json");
+      products = await r.json();
+      persist();
+    }
+    function persist(){ localStorage.setItem(LS_PRODUCTS, JSON.stringify(products)); }
+
+    function render(){
+      $("#count").textContent = products.length;
+      $("#adminList").innerHTML = products.map(p => `
+        <div class="admin-item">
+          <img src="${p.image}" alt=""/>
+          <div>
+            <h4>${p.title}</h4>
+            <small>${p.category} · ₹${p.price} · stock ${p.stock}${p.tag ? ` · ${p.tag}` : ""}</small>
+          </div>
+          <div class="admin-item__actions">
+            <button data-edit="${p.id}">Edit</button>
+            <button class="danger" data-del="${p.id}">Delete</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function resetForm(){
+      $("#prodForm").reset();
+      $("#prodForm").id.value = "";
+      $("#formTitle").textContent = "Add a new product";
+      $("#submitBtn").textContent = "Add product";
+      $("#cancelBtn").hidden = true;
+    }
+
+    document.addEventListener("click", (e) => {
+      const ed = e.target.closest("[data-edit]");
+      if(ed){
+        const p = products.find(x => x.id === ed.dataset.edit);
+        const f = $("#prodForm");
+        f.id.value = p.id;
+        f.title.value = p.title;
+        f.price.value = p.price;
+        f.stock.value = p.stock;
+        f.category.value = p.category;
+        f.tag.value = p.tag || "";
+        f.image.value = p.image;
+        f.description.value = p.description;
+        $("#formTitle").textContent = "Edit product";
+        $("#submitBtn").textContent = "Save changes";
+        $("#cancelBtn").hidden = false;
+        window.scrollTo({top:0, behavior:"smooth"});
+      }
+      const dl = e.target.closest("[data-del]");
+      if(dl){
+        if(!confirm("Delete this product?")) return;
+        products = products.filter(p => p.id !== dl.dataset.del);
+        persist(); render(); toast("Product deleted");
+      }
+    });
+
+    $("#cancelBtn").addEventListener("click", resetForm);
+
+    $("#prodForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const f = e.target;
+      const data = {
+        id: f.id.value || "p" + Date.now(),
+        title: f.title.value.trim(),
+        price: Number(f.price.value),
+        stock: Number(f.stock.value),
+        category: f.category.value.trim(),
+        tag: f.tag.value.trim() || undefined,
+        image: f.image.value.trim(),
+        description: f.description.value.trim(),
+      };
+      const idx = products.findIndex(p => p.id === data.id);
+      if(idx >= 0) products[idx] = data; else products.push(data);
+      persist(); render(); resetForm();
+      toast(idx >= 0 ? "Product updated" : "Product added");
+    });
+
+    $("#exportBtn").addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(products, null, 2)], {type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = "products.json"; a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    $("#resetBtn").addEventListener("click", async () => {
+      if(!confirm("Reset to original products.json?")) return;
+      localStorage.removeItem(LS_PRODUCTS);
+      await load(); render(); toast("Reset to defaults");
+    });
+
+    (async () => { await load(); render(); })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+[
+  {
+    "id": "p1",
+    "title": "Rain on Mylapore Candle",
+    "price": 650,
+    "category": "Candles",
+    "description": "Hand-poured soy candle that smells like first monsoon, wet earth and jasmine.",
+    "image": "https://images.unsplash.com/photo-1602874801006-94f1de0cdce7?w=700&q=80",
+    "stock": 12,
+    "tag": "bestseller"
+  },
+  {
+    "id": "p2",
+    "title": "Linen-bound Journal",
+    "price": 480,
+    "category": "Stationery",
+    "description": "A soft, oat-coloured journal with 160 unlined pages and a tucked ribbon.",
+    "image": "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=700&q=80",
+    "stock": 20
+  },
+  {
+    "id": "p3",
+    "title": "The Cozy Evening Hamper",
+    "price": 1850,
+    "category": "Hampers",
+    "description": "A candle, journal, ceramic mug and our chai blend — wrapped in linen.",
+    "image": "https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=700&q=80",
+    "stock": 8,
+    "tag": "new"
+  },
+  {
+    "id": "p4",
+    "title": "Hand-thrown Ceramic Mug",
+    "price": 520,
+    "category": "Home",
+    "description": "Slightly uneven, slightly perfect. Made by a potter in Pondicherry.",
+    "image": "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?w=700&q=80",
+    "stock": 15
+  },
+  {
+    "id": "p5",
+    "title": "Botanical Bath Salt Jar",
+    "price": 390,
+    "category": "Self-care",
+    "description": "Himalayan pink salt with rose petals and a drop of geranium oil.",
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=700&q=80",
+    "stock": 22
+  },
+  {
+    "id": "p6",
+    "title": "Brass Letter Opener",
+    "price": 720,
+    "category": "Stationery",
+    "description": "A small, weighty thing that makes opening post feel like a ritual.",
+    "image": "https://images.unsplash.com/photo-1568871391099-3d850e92e6f3?w=700&q=80",
+    "stock": 6
+  },
+  {
+    "id": "p7",
+    "title": "The 'Just Because' Hamper",
+    "price": 1250,
+    "category": "Hampers",
+    "description": "Two candles, dark chocolate, a card — for the days that don't need a reason.",
+    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=700&q=80",
+    "stock": 10
+  },
+  {
+    "id": "p8",
+    "title": "Saffron & Sandalwood Soap",
+    "price": 280,
+    "category": "Self-care",
+    "description": "Cold-pressed, small-batch, smells like a temple at dawn.",
+    "image": "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=700&q=80",
+    "stock": 30
+  },
+  {
+    "id": "p9",
+    "title": "Cotton Throw — Ecru",
+    "price": 1450,
+    "category": "Home",
+    "description": "Handloom cotton throw in undyed ecru. The softer it gets, the better.",
+    "image": "https://images.unsplash.com/photo-1522444690501-83bcd13ad03d?w=700&q=80",
+    "stock": 5,
+    "tag": "limited"
+  },
+  {
+    "id": "p10",
+    "title": "Pressed Flower Postcards",
+    "price": 220,
+    "category": "Stationery",
+    "description": "Set of 6 postcards with real pressed flowers from our garden.",
+    "image": "https://images.unsplash.com/photo-1582921017013-8f0234d4c2f3?w=700&q=80",
+    "stock": 25
+  },
+  {
+    "id": "p11",
+    "title": "Cardamom Coffee Candle",
+    "price": 690,
+    "category": "Candles",
+    "description": "Strong filter coffee, cardamom, a quiet kitchen at 7am.",
+    "image": "https://images.unsplash.com/photo-1602178506153-472ef4810278?w=700&q=80",
+    "stock": 9
+  },
+  {
+    "id": "p12",
+    "title": "Mini Plant in Terracotta",
+    "price": 350,
+    "category": "Home",
+    "description": "A baby succulent in a tiny hand-painted terracotta pot.",
+    "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=700&q=80",
+    "stock": 18
+  }
+]

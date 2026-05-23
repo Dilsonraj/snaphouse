@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Little Knot — Handpicked Gifts from Chennai</title>
+  <meta name="description" content="Little Knot is a small Chennai gift store with handpicked, thoughtful gifts for the people you love. Order easily on WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="brand" aria-label="Little Knot home">
+        <span class="brand__mark">◠</span>
+        <span class="brand__name">little knot<em>.</em></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">Our story</a>
+        <a href="#insta">Instagram</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="icon-btn" id="searchToggle" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <button class="icon-btn cart-btn" id="cartToggle" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 7h14l-1.4 10.2a2 2 0 0 1-2 1.8H8.4a2 2 0 0 1-2-1.8L5 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search bar -->
+    <div class="searchbar" id="searchbar" hidden>
+      <input type="text" id="searchInput" placeholder="Search for candles, journals, hampers…" />
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Chennai · est. 2022</span>
+        <h1>
+          Small gifts,<br/>
+          big <em>little</em> feelings.
+        </h1>
+        <p>A tiny shop of handpicked things — candles that smell like rain, journals that beg to be written in, and hampers built around someone you love.</p>
+        <div class="hero__cta">
+          <a href="#shop" class="btn btn--dark">Shop the edit</a>
+          <a href="#about" class="link-arrow">Read our story →</a>
+        </div>
+        <div class="hero__meta">
+          <div><strong>500+</strong><span>tiny knots tied</span></div>
+          <div><strong>48 hr</strong><span>Chennai delivery</span></div>
+          <div><strong>WhatsApp</strong><span>easy ordering</span></div>
+        </div>
+      </div>
+
+      <div class="hero__art">
+        <img class="hero__img hero__img--main" src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=900&q=80" alt="Wrapped gift with twine" loading="eager" />
+        <img class="hero__img hero__img--small" src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=500&q=80" alt="Hand-poured candle" loading="lazy" />
+        <span class="hero__sticker">made with care ✿</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>free wrapping</span><span>·</span>
+      <span>handwritten notes</span><span>·</span>
+      <span>WhatsApp orders</span><span>·</span>
+      <span>same-day in Chennai</span><span>·</span>
+      <span>free wrapping</span><span>·</span>
+      <span>handwritten notes</span><span>·</span>
+      <span>WhatsApp orders</span><span>·</span>
+      <span>same-day in Chennai</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- ============ CATEGORIES ============ -->
+  <section class="section" id="categories">
+    <div class="section__head">
+      <span class="eyebrow">browse by mood</span>
+      <h2>What kind of gift?</h2>
+    </div>
+    <div class="cats">
+      <button class="cat cat--all" data-cat="all">
+        <span>Everything</span>
+        <small>view all</small>
+      </button>
+      <button class="cat" data-cat="Candles">
+        <span>Candles</span>
+        <small>warm + glowy</small>
+      </button>
+      <button class="cat" data-cat="Stationery">
+        <span>Stationery</span>
+        <small>pretty paper</small>
+      </button>
+      <button class="cat" data-cat="Hampers">
+        <span>Hampers</span>
+        <small>fully wrapped</small>
+      </button>
+      <button class="cat" data-cat="Home">
+        <span>Home</span>
+        <small>cozy corners</small>
+      </button>
+      <button class="cat" data-cat="Self-care">
+        <span>Self-care</span>
+        <small>soft rituals</small>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED / SHOP ============ -->
+  <section class="section" id="shop">
+    <div class="section__head section__head--row">
+      <div>
+        <span class="eyebrow">the shop</span>
+        <h2 id="shopHeading">Featured this week</h2>
+      </div>
+      <div class="shop__filters">
+        <button class="chip chip--active" data-sort="featured">Featured</button>
+        <button class="chip" data-sort="low">Price ↑</button>
+        <button class="chip" data-sort="high">Price ↓</button>
+      </div>
+    </div>
+
+    <div class="products" id="productGrid"></div>
+
+    <p class="empty" id="emptyState" hidden>Nothing matches that just yet — try another mood.</p>
+  </section>
+
+  <!-- ============ OFFER BANNER ============ -->
+  <section class="offer">
+    <div class="offer__inner">
+      <div class="offer__text">
+        <span class="eyebrow eyebrow--light">a little extra</span>
+        <h3>Build a hamper, get free wrapping <br/>and a handwritten note.</h3>
+        <p>Pick any 3 items from the shop — we'll tie them together in our signature linen wrap.</p>
+      </div>
+      <a href="#shop" class="btn btn--light">Start building →</a>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section about" id="about">
+    <div class="about__grid">
+      <div class="about__imgs">
+        <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=700&q=80" alt="Workshop table" loading="lazy"/>
+        <img src="https://images.unsplash.com/photo-1606293459339-aa5d34a7b0e1?w=600&q=80" alt="Wrapped parcels" loading="lazy"/>
+      </div>
+      <div class="about__copy">
+        <span class="eyebrow">our story</span>
+        <h2>Started on a small balcony in Mylapore.</h2>
+        <p>Little Knot began with one wooden table, a roll of twine and too many candles. Today it's still small — just two of us picking, packing and writing every note by hand.</p>
+        <p>Every order is wrapped the same evening. If you message us on WhatsApp, you'll get one of us — not a bot.</p>
+        <a href="#contact" class="link-arrow">Come say hi →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INSTAGRAM ============ -->
+  <section class="section insta" id="insta">
+    <div class="section__head section__head--center">
+      <span class="eyebrow">@littleknot.shop</span>
+      <h2>Lately on Instagram</h2>
+    </div>
+    <div class="insta__grid">
+      <a href="#" class="insta__tile"><img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=500&q=80" alt="" loading="lazy"/></a>
+      <a href="#" class="insta__tile insta__tile--tall"><img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=500&q=80" alt="" loading="lazy"/></a>
+      <a href="#" class="insta__tile"><img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=500&q=80" alt="" loading="lazy"/></a>
+      <a href="#" class="insta__tile"><img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=500&q=80" alt="" loading="lazy"/></a>
+      <a href="#" class="insta__tile"><img src="https://images.unsplash.com/photo-1606293459339-aa5d34a7b0e1?w=500&q=80" alt="" loading="lazy"/></a>
+    </div>
+    <div class="insta__cta">
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="btn btn--outline">Follow @littleknot.shop</a>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact">
+    <div class="contact__grid">
+      <div>
+        <span class="eyebrow">say hello</span>
+        <h2>Got a gifting question?</h2>
+        <p>We're happiest on WhatsApp — tell us who it's for and we'll help you pick.</p>
+        <a class="btn btn--dark" href="https://wa.me/917358470385" target="_blank" rel="noopener">Message us on WhatsApp</a>
+      </div>
+      <ul class="contact__list">
+        <li><span>Studio</span> Mylapore, Chennai</li>
+        <li><span>Hours</span> Tue – Sun · 11am – 7pm</li>
+        <li><span>Email</span> hello@littleknot.shop</li>
+        <li><span>Insta</span> @littleknot.shop</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <a href="#" class="brand">
+          <span class="brand__mark">◠</span>
+          <span class="brand__name">little knot<em>.</em></span>
+        </a>
+        <p class="footer__tag">Small gifts, big little feelings — handpicked in Chennai.</p>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <h5>Shop</h5>
+          <a href="#shop">All gifts</a>
+          <a href="#categories">Categories</a>
+          <a href="#shop">New in</a>
+        </div>
+        <div>
+          <h5>Help</h5>
+          <a href="#contact">Contact</a>
+          <a href="https://wa.me/917358470385">WhatsApp</a>
+          <a href="admin.html">Manage products</a>
+        </div>
+        <div>
+          <h5>Follow</h5>
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year"></span> Little Knot · Made by hand in Chennai</span>
+    </div>
+  </footer>
+
+  <!-- ============ FLOATING WHATSAPP ============ -->
+  <a href="https://wa.me/917358470385" target="_blank" rel="noopener" class="fab" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3 17l-1 5 5.2-1.3A11 11 0 1 0 20.5 3.5Zm-8.5 18a9 9 0 0 1-4.6-1.3l-.3-.2-3 .8.8-3-.2-.3A9 9 0 1 1 12 21.5Zm5-6.7c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1l-.9 1c-.2.2-.3.2-.6.1a7.4 7.4 0 0 1-3.6-3.2c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-1 2.3c0 1.4 1 2.7 1.2 2.9.1.2 2.1 3.2 5 4.4 1.7.7 2.4.8 3.2.7.5 0 1.6-.7 1.9-1.3.2-.6.2-1.2.1-1.3-.1-.1-.3-.2-.6-.3Z"/></svg>
+  </a>
+
+  <!-- ============ CART DRAWER ============ -->
+  <div class="drawer" id="cartDrawer" hidden>
+    <div class="drawer__backdrop" data-close></div>
+    <aside class="drawer__panel" role="dialog" aria-label="Your cart">
+      <header class="drawer__head">
+        <h3>Your basket</h3>
+        <button class="icon-btn" data-close aria-label="Close">✕</button>
+      </header>
+      <div class="drawer__body" id="cartBody"></div>
+      <footer class="drawer__foot" id="cartFoot" hidden>
+        <div class="cart__row"><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div>
+        <p class="cart__note">Delivery confirmed on WhatsApp after order.</p>
+        <button class="btn btn--dark btn--full" id="checkoutBtn">Place order on WhatsApp</button>
+      </footer>
+    </aside>
+  </div>
+
+  <!-- ============ QUICK VIEW ============ -->
+  <div class="modal" id="quickView" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" id="quickViewPanel"></div>
+  </div>
+
+  <!-- ============ CHECKOUT MODAL ============ -->
+  <div class="modal" id="checkoutModal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--narrow">
+      <button class="modal__close" data-close aria-label="Close">✕</button>
+      <span class="eyebrow">almost there</span>
+      <h3>A few quick details</h3>
+      <p class="muted">We'll open WhatsApp with your order ready to send.</p>
+      <form id="checkoutForm" class="form">
+        <label>Your name<input type="text" name="name" required placeholder="e.g. Priya" /></label>
+        <label>Phone number<input type="tel" name="phone" required placeholder="10-digit number" pattern="[0-9 +]{10,}"/></label>
+        <label>Delivery address<textarea name="address" required rows="3" placeholder="Door no, street, area, pincode"></textarea></label>
+        <button type="submit" class="btn btn--dark btn--full">Open WhatsApp →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ TOAST ============ -->
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
