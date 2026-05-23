@@ -358,6 +358,9 @@ function bindEvents() {
     if (close) {
       const modal = close.closest(".modal, .drawer");
       if (modal) closeEl(modal);
+      else {
+        $$(".modal, .drawer").forEach((m) => { if (!m.hidden) closeEl(m); });
+      }
     }
   });
 
